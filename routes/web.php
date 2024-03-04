@@ -42,3 +42,8 @@ Route::get('/', function (Request $request) {
         'fibonacci' => fibonacci($value)
     ]);
 });
+
+Route::get('/hello/{name}/{class}', function($name, $class) {
+    if (!$name || $class) "cek lagi routenya";
+    return "Nama $name, Saya hadir di kelas $class";
+});
