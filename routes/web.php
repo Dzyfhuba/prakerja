@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,19 +31,10 @@ function fibonacci($n) {
     }
 }
 
-Route::get('/', function (Request $request) {
-    $value = $request->query('value');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    if ($value > 5) return response([
-        'error' => 'Max 5'
-    ]);
-    
-    return response([
-        'Hello' => 'World',
-        'factorial' => factorial($value),
-        'fibonacci' => fibonacci($value)
-    ]);
-});
+Route::resource('students', StudentController::class);
+Route::get('/api/students/get', [StudentController::class, 'get'])->name('students.get');
 
 Route::get('/hello/{name}/{class}', function($name, $class) {
     if (!$name || $class) "cek lagi routenya";
