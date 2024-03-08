@@ -13,6 +13,7 @@ class Student extends Model
       'name',
       'email',
       'favorites',
+      'user_id'
     ];
 
     protected $casts = [

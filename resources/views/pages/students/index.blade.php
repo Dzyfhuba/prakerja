@@ -2,9 +2,11 @@
 
 @section('content')
     <div class="p-3">
+        @role('admin')
         <a class="btn btn-primary d-block ml-auto" id='create' href='{{ route('students.create') }}'>
             Create
         </a>
+        @endrole
 
         <div class="mb-3"></div>
 
@@ -39,13 +41,15 @@
                             @endforeach
                         </td>
                         <td>
+                          @if (auth()->user()->hasRole('admin') || $item->user_id == auth()->user()->id)
                             <a href="{{ route('students.edit', $item->id) }}" class="btn w-100 btn-sm btn-warning">
-                                Edit
+                              Edit
                             </a>
                             <button type="button" class="btn btn-danger btn-sm w-100"
-                                onclick="confirmAndDelete({{ $item->id }});">
-                                Delete
+                            onclick="confirmAndDelete({{ $item->id }});">
+                              Delete
                             </button>
+                          @endif
                         </td>
                     </tr>
                 @endforeach

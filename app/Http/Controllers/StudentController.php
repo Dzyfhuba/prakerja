@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -57,7 +58,16 @@ class StudentController extends Controller
 
       $payload = $validator->validated();
 
-      Student::create($payload);
+      $user = User::create([
+        'name' => $payload['name'],
+        'email' => $payload['email'],
+        'password' => '12345678'
+      ]);
+      Student::create([
+        ...$payload,
+        'user_id' => $user->id
+      ]);
+      $user->assignRole('student');
 
       $page = Student::paginate();
 
@@ -95,6 +105,10 @@ class StudentController extends Controller
   public function update(Request $request, Student $student)
   {
     try {
+      if (auth()->user()->id != $student->user_id) {
+        return abort(404);
+      }
+
       $validator = Validator::make($request->all(), [
         'name' => [
           'required',

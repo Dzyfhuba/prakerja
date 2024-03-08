@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,27 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-function factorial ($value) {
-    if ($value > 0) return factorial($value - 1) * $value;
-    return 1;
-}
 
-function fibonacci($n) {
-    if ($n == 0) {
-        return 0;
-    } elseif ($n == 1 || $n == 2) {
-        return 1;
-    } else {
-        return fibonacci($n - 1) + fibonacci($n - 2);
-    }
-}
-
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::resource('students', StudentController::class);
-Route::post('/api/students/get', [StudentController::class, 'get'])->name('students.get');
-
-Route::get('/hello/{name}/{class}', function($name, $class) {
-    if (!$name || $class) "cek lagi routenya";
-    return "Nama $name, Saya hadir di kelas $class";
+Route::middleware('auth')->group(function () {
+  Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+  Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+  Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::middleware(['auth'])->group(function () {
+  Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+  Route::get('/students', [StudentController::class, 'index'])->name('students.index');
+  Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
+  Route::get('/students/{student}', [StudentController::class, 'show'])->name('students.show');
+  Route::get('/students/{student}/edit', [StudentController::class, 'edit'])->name('students.edit');
+  Route::post('/students', [StudentController::class, 'store'])->name('students.store')->middleware('role:admin');
+  Route::delete('/students/{student}', [StudentController::class, 'destroy'])->name('students.destroy')->middleware('role:admin');
+  Route::patch('/students/{student}', [StudentController::class, 'update'])->name('students.update');
+});
+
+require __DIR__ . '/auth.php';
