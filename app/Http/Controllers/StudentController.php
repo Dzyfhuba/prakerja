@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
@@ -13,24 +14,9 @@ class StudentController extends Controller
    */
   public function index()
   {
-    return view('pages.students');
-  }
-
-  public function get(Request $request)
-  {
-    $data = Student::all();
-    // $data = $data->map(fn ($student, $idx) => ([
-    //   ...$student,
-    //   'action' => "<button class='btn btn-primary d-block ml-auto' id='edit{$student->id}' data-toggle='modal' data-target='#formModal'>
-    //                 Create
-    //             </button>"
-    // ]));
-    return response([
-      'data' => $data->map(fn($item) => array_values($item->toArray())),
-      'draw' => $request->draw,
-      "recordsTotal" => $data->count(),
-      "recordsFiltered" => $data->count(),
-      "request" => $request->all()
+    $data = Student::query();
+    return view('pages.students.index', [
+      'data' => $data->paginate()
     ]);
   }
 
@@ -39,7 +25,7 @@ class StudentController extends Controller
    */
   public function create()
   {
-    //
+    return view('pages.students.form');
   }
 
   /**
@@ -66,25 +52,22 @@ class StudentController extends Controller
       ]);
 
       if ($validator->fails()) {
-        return response([
-          'error' => $validator->getMessageBag(),
-          'message' => 'Your input is not correct'
-        ], 400);
+        return redirect()->route('students.create')->withErrors($validator)->withInput();
       }
 
       $payload = $validator->validated();
 
-      $item = Student::create($payload);
+      Student::create($payload);
 
-      return response([
-        'item' => $item,
-        'message' => 'Successfully created a new student.'
-      ], 201);
+      $page = Student::paginate();
+
+      return redirect()->route('students.index', [
+        'page' => $page->lastPage()
+      ]);
     } catch (\Exception $e) {
-      return response([
-        'error' => $e,
-        'message' => 'Something has encountered an error on the server. Please contact the developer.'
-      ], 500);
+      return redirect()->route('students.create')->withErrors([
+        'error' => $e
+      ]);
     }
   }
 
@@ -101,7 +84,9 @@ class StudentController extends Controller
    */
   public function edit(Student $student)
   {
-    //
+    return view('pages.students.form', [
+      'item' => $student
+    ]);
   }
 
   /**
@@ -109,14 +94,56 @@ class StudentController extends Controller
    */
   public function update(Request $request, Student $student)
   {
-    //
+    try {
+      $validator = Validator::make($request->all(), [
+        'name' => [
+          'required',
+          Rule::unique('students', 'name')->ignore($student->id),
+        ],
+        'email' => [
+          'required',
+          'email',
+          Rule::unique('students', 'email')->ignore($student->id),
+        ],
+        'favorites' => [
+          'required',
+          'array',
+          function ($attribute, $value, $fail) {
+            $allowedValues = ['science', 'computer', 'music', 'art', 'social', '0'];
+            foreach ($value as $item) {
+              if (!in_array($item, $allowedValues)) {
+                $fail($attribute . ' contains an invalid value.');
+              }
+            }
+          },
+        ],
+      ]);
+
+      if ($validator->fails()) {
+        return redirect()->route('students.edit', ['student' => $student->id])
+          ->withErrors($validator)
+          ->withInput();
+      }
+
+      $payload = $validator->validated();
+
+      $student->update($payload);
+
+      return redirect()->route('students.index');
+    } catch (\Exception $e) {
+      return redirect()->route('students.edit', ['student' => $student->id])
+        ->withErrors([
+          'error' => 'An error occurred while updating the student.',
+        ]);
+    }
   }
+
 
   /**
    * Remove the specified resource from storage.
    */
   public function destroy(Student $student)
   {
-    //
+    $student->delete();
   }
 }

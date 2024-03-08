@@ -34,7 +34,7 @@ function fibonacci($n) {
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::resource('students', StudentController::class);
-Route::get('/api/students/get', [StudentController::class, 'get'])->name('students.get');
+Route::post('/api/students/get', [StudentController::class, 'get'])->name('students.get');
 
 Route::get('/hello/{name}/{class}', function($name, $class) {
     if (!$name || $class) "cek lagi routenya";

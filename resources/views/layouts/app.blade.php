@@ -12,6 +12,27 @@
 
     <title>SB Admin 2 - Dashboard</title>
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            corePlugins: {
+                preflight: false,
+
+            }
+        }
+    </script>
+    <style>
+      .btn {
+            /* Reset styles */
+            all: unset;
+            /* Add your own styles if needed */
+        }
+
+        /* Disable focus styles for all elements */
+        *:focus {
+            outline: none;
+        }
+    </style>
     <!-- Custom fonts for this template-->
     <link href="{{ asset('sb-admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
@@ -292,7 +313,7 @@
                                     </div>
                                     <div class="font-weight-bold">
                                         <div class="text-truncate">{!! "Hi there! I am wondering if you can help me with a
-                                                                                                                            problem I\'ve been having." !!}</div>
+                                                                                                                                                                                                                                                    problem I\'ve been having." !!}</div>
                                         <div class="small text-gray-500">
                                             {{ 'Emily Fowler · 58m' }}</div>
                                     </div>
