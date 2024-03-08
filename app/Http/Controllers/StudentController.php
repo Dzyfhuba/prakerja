@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentStoreRequest;
+use App\Http\Requests\StudentUpdateRequest;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,39 +34,17 @@ class StudentController extends Controller
   /**
    * Store a newly created resource in storage.
    */
-  public function store(Request $request)
+  public function store(StudentStoreRequest $request)
   {
     try {
-      $validator = Validator::make($request->all(), [
-        'name' => 'required|unique:students,name',
-        'email' => 'required|email|unique:students,email',
-        'favorites' => [
-          'required',
-          'array',
-          function ($attribute, $value, $fail) {
-            $allowedValues = ['science', 'computer', 'music', 'art', 'social', '0'];
-            foreach ($value as $item) {
-              if (!in_array($item, $allowedValues)) {
-                $fail($attribute . ' contains an invalid value.');
-              }
-            }
-          }
-        ],
-      ]);
-
-      if ($validator->fails()) {
-        return redirect()->route('students.create')->withErrors($validator)->withInput();
-      }
-
-      $payload = $validator->validated();
 
       $user = User::create([
-        'name' => $payload['name'],
-        'email' => $payload['email'],
+        'name' => $request->name,
+        'email' => $request->email,
         'password' => '12345678'
       ]);
       Student::create([
-        ...$payload,
+        ...$request->all(),
         'user_id' => $user->id
       ]);
       $user->assignRole('student');
@@ -102,46 +82,14 @@ class StudentController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Student $student)
+  public function update(StudentUpdateRequest $request, Student $student)
   {
     try {
-      if (auth()->user()->id != $student->user_id) {
+      if (auth()->user()->hasRole('student') && auth()->user()->id != $student->user_id) {
         return abort(404);
       }
 
-      $validator = Validator::make($request->all(), [
-        'name' => [
-          'required',
-          Rule::unique('students', 'name')->ignore($student->id),
-        ],
-        'email' => [
-          'required',
-          'email',
-          Rule::unique('students', 'email')->ignore($student->id),
-        ],
-        'favorites' => [
-          'required',
-          'array',
-          function ($attribute, $value, $fail) {
-            $allowedValues = ['science', 'computer', 'music', 'art', 'social', '0'];
-            foreach ($value as $item) {
-              if (!in_array($item, $allowedValues)) {
-                $fail($attribute . ' contains an invalid value.');
-              }
-            }
-          },
-        ],
-      ]);
-
-      if ($validator->fails()) {
-        return redirect()->route('students.edit', ['student' => $student->id])
-          ->withErrors($validator)
-          ->withInput();
-      }
-
-      $payload = $validator->validated();
-
-      $student->update($payload);
+      $student->update($request->all());
 
       return redirect()->route('students.index');
     } catch (\Exception $e) {
