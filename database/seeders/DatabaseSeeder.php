@@ -18,11 +18,11 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
-    // $this->students();
+    $this->students();
 
-    // $this->usersAndRoles();
+    $this->usersAndRoles();
 
-    // $this->assignStudent();
+    $this->assignStudent();
 
     $this->postsCategoriesProducts();
   }

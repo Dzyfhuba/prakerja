@@ -42,6 +42,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     @stack('style')
+    @stack('head')
 </head>
 
 <body id="page-top">
@@ -68,6 +69,24 @@
                 <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
+            </li>
+
+            <li class="nav-item{{ Route::currentRouteNamed('posts.index') ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('posts.index') }}">
+                    <i class="fas fa-solid fa-globe"></i>
+                    <span>Posts</span></a>
+            </li>
+
+            <li class="nav-item{{ Route::currentRouteNamed('categories.index') ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('categories.index') }}">
+                    <i class="fas fa-solid fa-object-group"></i>
+                    <span>Categories</span></a>
+            </li>
+
+            <li class="nav-item{{ Route::currentRouteNamed('products.index') ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('products.index') }}">
+                    <i class="fas fa-solid fa-list"></i>
+                    <span>Products</span></a>
             </li>
 
             <li class="nav-item{{ Route::currentRouteNamed('students.index') ? ' active' : '' }}">

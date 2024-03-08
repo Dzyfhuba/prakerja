@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostStoreRequest;
+use App\Http\Requests\PostUpdateRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $data = Post::query();
+
+        return view('pages.posts.index', [
+          'data' => $data->paginate()
+        ]);
     }
 
     /**
@@ -20,15 +26,21 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.posts.form');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        //
+        Post::create($request->all());
+
+        $page = Post::paginate();
+
+        return redirect()->route('posts.index', [
+          'page' => $page->lastPage()
+        ]);
     }
 
     /**
@@ -36,7 +48,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('pages.posts.show', [
+          'item' => $post
+        ]);
     }
 
     /**
@@ -44,15 +58,23 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('pages.posts.form', [
+          'item' => $post
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(PostUpdateRequest $request, Post $post)
     {
-        //
+        $post->update($request->all());
+
+        $count = Post::where('id', '<=', $post->id)->count();
+
+        return redirect()->route('posts.index', [
+          'page' => ceil($count / 15)
+        ]);
     }
 
     /**
@@ -60,6 +82,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
 }

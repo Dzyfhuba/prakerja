@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +27,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+  Route::resource('posts', PostController::class);
+  Route::resource('categories', CategoryController::class);
+  Route::resource('products', ProductController::class);
+
   Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
   Route::get('/students', [StudentController::class, 'index'])->name('students.index');
   Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
