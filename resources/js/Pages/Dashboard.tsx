@@ -13,6 +13,7 @@ import Markdown from 'react-markdown'
 import { formatCurrency } from '@/Helpers'
 import Image from '@/Components/Image'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import Heros from '@/Components/Heros'
 
 interface Props extends PageProps {
   posts?: {
@@ -42,41 +43,44 @@ const Dashboard = (props: Props) => {
 
   return (
     <Main user={props.auth.user}>
-      <section>
-        {props.products?.length ? (
-          <Swiper
-            className='h-screen'
-            modules={[Pagination, Autoplay]}
-            loop={true}
-            pagination={{
-              clickable: true,
-            }}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-          >
-            {props.products.map(item => (
-              <SwiperSlide key={item.id} className='bg-base-300 !flex flex-col items-center pt-20 px-3 pb-16'>
-                <Image
-                  src={item.images![0]}
-                  alt={item.name}
-                  className='h-1/2 w-1/2 object-contain'
-                />
-                <h2 className='font-bold text-xl'>
-                  {item.name}
+      {/* Heros */}
+      {props.products?.length ? (
+        <Heros products={props.products} />
+      ) : <>No Products Available</>}
+
+      {/* All Products By Categories */}
+      <section id='categories' className='p-3'>
+        <h1 className='text-xl font-bold mb-3'>
+          Our products
+        </h1>
+        <div className="flex flex-col gap-3">
+          {props.categories?.length ?
+            props.categories.map(c => (
+              <div className="collapse collapse-arrow bg-base-200" key={c.id}>
+                <input type="checkbox" />
+                <h2 className="collapse-title text-xl font-bold">
+                  {c.name}
                 </h2>
-                <span>{formatCurrency(item.price || 0)}</span>
-                <div className='line-clamp-4'>
-                  <Markdown>{item.description}</Markdown>
+                <div className="collapse-content flex-col flex gap-3">
+                  {c.products?.length ?
+                    c.products.map(p => (
+                      <div className='bg-base-300 p-3 rounded-xl'>
+                        <h3 className='font-semibold underline text-lg'>
+                          {p.name}
+                        </h3>
+                        <div className='line-clamp-2 text-xs'>
+                          <Markdown>
+                            {p.description}
+                          </Markdown>
+                        </div>
+                      </div>
+                    ))
+                    : <>No Products Available in This Category</>}
                 </div>
-                <Link href={`/posts/${item.slug}`} className='mt-auto btn btn-primary'>
-                  Show More
-                </Link>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        ) : <>No Products Available</>}
+              </div>
+            ))
+            : <>No Categories Available</>}
+        </div>
       </section>
     </Main>
   )

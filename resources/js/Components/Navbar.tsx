@@ -2,6 +2,7 @@ import { User } from "@/types"
 import { Link, router } from "@inertiajs/react"
 import { useEffect, useState } from "react"
 import { MdAccountCircle, MdClose, MdMenu } from "react-icons/md"
+import DarkToggle from "./DarkToggle"
 
 type Props = {
   user?: User
@@ -59,6 +60,9 @@ const Navbar = (props: Props) => {
             {props.user?.name || 'Account'} <MdAccountCircle size={24} />
           </summary>
           <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+            <li>
+              <DarkToggle />
+            </li>
             {props.user ? (
               <>
                 <li>
@@ -98,6 +102,9 @@ const Navbar = (props: Props) => {
                   {props.user?.name || 'Account'} <MdAccountCircle size={24} />
                 </summary>
                 <ul className="">
+                  <li>
+                    <DarkToggle />
+                  </li>
                   {props.user ? (
                     <>
                       <li>
