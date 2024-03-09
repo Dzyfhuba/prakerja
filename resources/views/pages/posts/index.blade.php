@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="p-3">
-        @role('admin')
+        @hasanyrole('admin|writer')
         <a class="btn btn-primary d-block w-max ml-auto" id='create' href='{{ route('posts.create') }}'>
             Create
         </a>
@@ -20,6 +20,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
+                    <th>Author</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -28,21 +29,24 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->title }}</td>
+                        <td>{{ $item->user?->name }}</td>
                         <td>
-                          @if (auth()->user()->hasRole('admin') || $item->user_id == auth()->user()->id)
+                          @if (auth()->user()->hasRole('admin') || auth()->user()->hasRole('writer') || $item->user_id == auth()->user()->id)
                             <a href="{{ route('posts.show', $item->id) }}" class="btn w-max btn-sm btn-secondary">
                               Show
                             </a>
                             <a href="{{ route('posts.edit', $item->id) }}" class="btn w-max btn-sm btn-warning">
                               Edit
                             </a>
+                            @if (auth()->user()->hasRole('admin') || $item->user_id == auth()->user()->id)
+
                             <button type="button" class="btn btn-danger w-max btn-sm" data-toggle="modal" data-target="#deleteModal{{$item->id}}">
                               Delete
                             </button>
                             <div class="modal fade" id="deleteModal{{$item->id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                               <form action="{{route('posts.destroy', $item->id)}}" method="post">
-                              @csrf
-                              @method('DELETE')
+                                @csrf
+                                @method('DELETE')
                                 <div class="modal-dialog modal-sm">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -59,8 +63,9 @@
                                       <button type="submit" class="btn btn-danger">Delete</button>
                                     </div>
                                   </div>
-                              </form>
+                                </form>
                               </div>
+                              @endif
                             </div>
                           @endif
                         </td>

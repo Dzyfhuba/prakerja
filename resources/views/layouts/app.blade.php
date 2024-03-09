@@ -57,7 +57,7 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
                     {{-- <i class="fas fa-laugh-wink"></i> --}}
-                    <img src="laravel.svg" class="w-1/2 h-1/2" alt="{{env('APP_NAME')}}">
+                    <img src="/laravel.svg" class="w-1/2 h-1/2" alt="{{env('APP_NAME')}}">
                 </div>
                 <div class="sidebar-brand-text mx-3">{{env('APP_NAME')}}</div>
             </a>
@@ -78,6 +78,7 @@
                     <span>Posts</span></a>
             </li>
 
+            @role('admin')
             <li class="nav-item{{ Route::currentRouteNamed('categories.index') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('categories.index') }}">
                     <i class="fas fa-solid fa-object-group"></i>
@@ -89,6 +90,7 @@
                     <i class="fas fa-solid fa-list"></i>
                     <span>Products</span></a>
             </li>
+            @endrole
 
             <li class="nav-item{{ Route::currentRouteNamed('students.index') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('students.index') }}">
@@ -99,11 +101,13 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            @role('admin')
             <li class="nav-item{{ Route::currentRouteNamed('users.index') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('users.index') }}">
                     <i class="fas fa-solid fa-user"></i>
                     <span>Users</span></a>
             </li>
+            @endrole
 
             {{-- <!-- Heading -->
             <div class="sidebar-heading">
