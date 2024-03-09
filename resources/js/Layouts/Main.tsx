@@ -1,3 +1,4 @@
+import Footer from "@/Components/Footer"
 import Navbar from "@/Components/Navbar"
 import { User } from "@/types"
 import { ReactNode } from "react"
@@ -12,9 +13,11 @@ const Main = (props: Props) => {
     <>
       <Navbar user={props.user} />
 
-      <main>
+      <main className="min-h-[150vh]">
         {props.children}
       </main>
+
+      <Footer />
     </>
   )
 }

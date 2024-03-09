@@ -24,7 +24,7 @@ class ProductUpdateRequest extends FormRequest
         return [
           'name' => 'required',
           'slug' => 'required|regex:/^[a-z0-9-]+$/|unique:products,slug,'.$this->route('product')->id,
-          'images' => 'required',
+          'images' => 'nullable',
           'price' => 'required',
           'description' => 'required',
           'category_id' => 'required|exists:categories,id',

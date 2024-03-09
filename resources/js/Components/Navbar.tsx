@@ -1,5 +1,6 @@
 import { User } from "@/types"
 import { Link, router } from "@inertiajs/react"
+import { useEffect, useState } from "react"
 import { MdAccountCircle, MdClose, MdMenu } from "react-icons/md"
 
 type Props = {
@@ -17,9 +18,35 @@ const Navbar = (props: Props) => {
 
   }
 
+  const [isNavbarVisible, setNavbarVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+
+      if (currentScrollPos > prevScrollPos) {
+        // Scrolling down, hide the navbar
+        setNavbarVisible(false);
+      } else {
+        // Scrolling up, show the navbar
+        setNavbarVisible(true);
+      }
+
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      // Cleanup event listener on component unmount
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [prevScrollPos]);
+
   return (
-    <nav>
-      <div className="flex items-center w-full shadow-md px-2 py-2 h-11 justify-between">
+    <nav className={`${isNavbarVisible ? 'fixed' : 'hidden'} top-0 z-10 w-full`}>
+      <div className="flex items-center w-full shadow-md px-2 py-2 h-11 justify-between bg-base-100">
         <label htmlFor="my-drawer" className="btn btn-ghost btn-sm btn-square p-0 drawer-button sm:hidden">
           <MdMenu size={24} />
         </label>

@@ -83,10 +83,11 @@ class ProductController extends Controller
    */
   public function edit(Product $product)
   {
-    $category = Category::all();
+    $categories = Category::all();
+
     return view('pages.products.form', [
       'item' => $product,
-      'categories' => $category
+      'categories' => $categories
     ]);
   }
 
@@ -97,23 +98,31 @@ class ProductController extends Controller
   {
     $images = $request->file('images');
 
-    $paths = [];
+    if ($request->images) {
+      $paths = [];
 
-    foreach ($images as $image) {
-      // Generate ULID as the new filename
-      $ulid = (string) Ulid::generate();
-      $newFilename = $ulid . '.' . $image->getClientOriginalExtension();
+      foreach ($images as $image) {
+        // Generate ULID as the new filename
+        $ulid = (string) Ulid::generate();
+        $newFilename = $ulid . '.' . $image->getClientOriginalExtension();
 
-      // Move the image to the storage directory
-      $image->storeAs('products', $newFilename, 'public');
+        // Move the image to the storage directory
+        $image->storeAs('products', $newFilename, 'public');
 
-      $paths[] = "/storage/products/" . $newFilename;
+        $paths[] = "/storage/products/" . $newFilename;
+      }
+
+      $product->update([
+        ...$request->except('images'),
+        'images' => $paths,
+      ]);
+    } else {
+      $product->update([
+        ...$request->except('images'),
+      ]);
     }
 
-    $product->update([
-      ...$request->except('images'),
-      'images' => $paths,
-    ]);
+
 
     $count = Product::where('id', '<=', $product->id)->count();
 
