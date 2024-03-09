@@ -23,7 +23,7 @@ class PostUpdateRequest extends FormRequest
   {
     return [
       'title' => 'required|min:5',
-      'slug' => "required|unique:posts,slug,{$this->route('post')->id}|min:5",
+      'slug' => "required|unique:posts,slug,{$this->route('post')->id}|min:5|regex:/^[a-z0-9-]+$/",
       'content' => 'required|min:5'
     ];
   }
