@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+      $data = Category::paginate();
+        return view('pages.categories.index', [
+          'data' => $data
+        ]);
     }
 
     /**
@@ -20,15 +25,21 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.categories.form');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        //
+        Category::create($request->all());
+
+        $page = Category::paginate();
+
+        return redirect()->route('categories.index', [
+          'page' => $page->lastPage()
+        ]);
     }
 
     /**
@@ -44,15 +55,23 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('pages.categories.form', [
+          'item' => $category
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryUpdateRequest $request, Category $category)
     {
-        //
+        $category->update($request->all());
+
+        $count = Category::where('id', '<=', $category->id)->count();
+
+        return redirect()->route('categories.index', [
+          'page' => ceil($count / 15)
+        ]);
     }
 
     /**
@@ -60,6 +79,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('categories.index');
     }
 }

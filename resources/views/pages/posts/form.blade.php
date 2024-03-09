@@ -17,9 +17,9 @@
             @csrf
             @method(Route::currentRouteNamed('posts.create') ? 'POST' : 'PATCH')
             @if (Route::currentRouteNamed('posts.create'))
-                <h1>Add A New Student</h1>
+                <h1>Add A New Post</h1>
             @else
-                <h1>Edit Student: {{ isset($item) ? $item->name : '' }}</h1>
+                <h1>Edit Post: {{ isset($item) ? $item->name : '' }}</h1>
             @endif
             <div class="modal-body">
                 <div class="form-group">
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="content">Content</label>
                     <textarea></textarea>
-                    <textarea name="content" id="content"></textarea>
+                    <textarea name="content" id="content" hidden></textarea>
                     @error('content')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -70,7 +70,7 @@
     <script>
       const easyMDE = new EasyMDE()
         document.addEventListener('DOMContentLoaded', function() {
-            easyMDE.value('{{$item->content}}')
+            easyMDE.value('{{isset($item) ? $item->content : ''}}')
         });
     </script>
 

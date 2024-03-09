@@ -3,9 +3,9 @@
 @section('content')
     <div class="p-3">
         @role('admin')
-        <a class="btn btn-primary d-block ml-auto" id='create' href='{{ route('students.create') }}'>
-            Create
-        </a>
+            <a class="btn btn-primary d-block ml-auto w-max" id='create' href='{{ route('categories.create') }}'>
+                Create
+            </a>
         @endrole
 
         <div class="mb-3"></div>
@@ -19,9 +19,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Favorites</th>
+                    <th>Category</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -30,26 +28,41 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->email }}</td>
-                        <td style="display: flex; flex-direction: column; gap: 8px;">
-                            @foreach ($item->favorites as $f)
-                                @if ($f == 0)
-                                    Lainnya
-                                @else
-                                    {{ $f }}
-                                @endif
-                            @endforeach
-                        </td>
                         <td>
-                          @if (auth()->user()->hasRole('admin') || $item->user_id == auth()->user()->id)
-                            <a href="{{ route('students.edit', $item->id) }}" class="btn w-100 btn-sm btn-warning">
-                              Edit
-                            </a>
-                            <button type="button" class="btn btn-danger btn-sm w-100"
-                            onclick="confirmAndDelete({{ $item->id }});">
-                              Delete
-                            </button>
-                          @endif
+                            @if (auth()->user()->hasRole('admin'))
+                                <a href="{{ route('categories.edit', $item->id) }}" class="btn w-100 btn-sm btn-warning">
+                                    Edit
+                                </a>
+                                <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#deleteModal{{$item->id}}">
+                                  Delete
+                                </button>
+                                <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1"
+                                    aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <form action="{{ route('categories.destroy', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <div class="modal-dialog modal-sm">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel">Are you sure you want to
+                                                        delete?</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    "{{ $item->name }}" will be deleted and can't restored
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </div>
+                                            </div>
+                                    </form>
+                                </div>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -67,7 +80,7 @@
 
             if (confirmation) {
                 // If the user confirms, send a DELETE request using Fetch API
-                fetch(`/students/${studentId}`, {
+                fetch(`/categories/${studentId}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',

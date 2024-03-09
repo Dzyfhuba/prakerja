@@ -2,92 +2,95 @@
 
 @section('content')
     <div class="p-3">
+      @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form id="form"
-            action="{{ Route::currentRouteNamed('students.create') ? route('students.store') : route('students.update', isset($item) ? $item->id : 0) }}"
+            action="{{ Route::currentRouteNamed('categories.create') ? route('categories.store') : route('categories.update', isset($item) ? $item->id : 0) }}"
             method="POST">
             @csrf
-            @method(Route::currentRouteNamed('students.create') ? 'POST' : 'PATCH')
-            @if (Route::currentRouteNamed('students.create'))
-                <h1>Add A New Student</h1>
+            @method(Route::currentRouteNamed('categories.create') ? 'POST' : 'PATCH')
+            @if (Route::currentRouteNamed('categories.create'))
+                <h1>Add A New Category</h1>
             @else
-                <h1>Edit Student: {{ isset($item) ? $item->name : '' }}</h1>
+                <h1>Edit Category: {{ isset($item) ? $item->name : '' }}</h1>
             @endif
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Oalah Siswa"
+                    <label for="name">Category</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Categori A"
                         value="{{ isset($item) ? old('name') ?? $item->name : old('name') }}">
                     @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com"
-                        value="{{ isset($item) ? old('email') ?? $item->email : old('email') }}">
-                    @error('email')
+                    <label for="slug">Slug</label>
+                    <input type="slug" class="form-control" id="slug" name="slug" placeholder="post-title"
+                        value="{{ isset($item) ? old('slug') ?? $item->slug : old('slug') }}">
+                    @error('slug')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <span>Favorites (Min: 1, Max: 3)</span>
-                    @error('favorites')
+                    <label for="description">Description</label>
+                    <textarea></textarea>
+                    <textarea name="description" id="description" hidden></textarea>
+                    @error('description')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="science" id="favoriteScience"
-                            name="favorites[]" @checked(isset($item) ? in_array('science', $item->favorites) : false)>
-                        <label class="form-check-label" for="favoriteScience">
-                            Science
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="computer" id="favoriteComputer"
-                            name="favorites[]" @checked(isset($item) ? in_array('computer', $item->favorites) : false)>
-                        <label class="form-check-label" for="favoriteComputer">
-                            Computer
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="music" id="favoriteMusic" name="favorites[]"
-                            @checked(isset($item) ? in_array('music', $item->favorites) : false)>
-                        <label class="form-check-label" for="favoriteMusic">
-                            Music
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="art" id="favoriteArt" name="favorites[]"
-                            @checked(isset($item) ? in_array('art', $item->favorites) : false)>
-                        <label class="form-check-label" for="favoriteArt">
-                            Art
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="social" id="favoriteSocial"
-                            name="favorites[]" @checked(isset($item) ? in_array('social', $item->favorites) : false)>
-                        <label class="form-check-label" for="favoriteSocial">
-                            Social
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="0" id="favorite0" name="favorites[]"
-                            @checked(isset($item) ? in_array('0', $item->favorites) : false)>
-                        <label class="form-check-label" for="favorite0">
-                            There are no suitable options
-                        </label>
-                    </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <a class="btn btn-secondary" href="{{ route('students.index') }}">Cancel</a>
+                <a class="btn btn-secondary" href="{{ route('categories.index') }}">Cancel</a>
                 <button class="btn btn-primary" type="submit">
-                  @if (Route::currentRouteNamed('students.create'))
-                    Create
-                  @else
-                    Save
-                  @endif
+                    @if (Route::currentRouteNamed('categories.create'))
+                        Create
+                    @else
+                        Save
+                    @endif
                 </button>
             </div>
         </form>
     </div>
 @endsection
+
+@push('head')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+@endpush
+
+@push('script')
+    <script>
+        const easyMDE = new EasyMDE()
+        document.addEventListener('DOMContentLoaded', function() {
+            easyMDE.value('{{ isset($item) ? $item->description : '' }}')
+        });
+    </script>
+
+    <script>
+        const slugify = (str) => {
+            return str
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, '') // Remove unwanted characters
+                .replace(/\s+/g, '-') // Replace spaces with dashes
+                .replace(/-+/g, '-'); // Remove consecutive dashes
+        }
+    </script>
+
+    <script>
+        easyMDE.codemirror.on("change", () => {
+            document.querySelector('textarea#description').value = easyMDE.value()
+        })
+
+        document.querySelector('#name').addEventListener('keyup', (e) => {
+            document.querySelector('#slug').value = slugify(e.target.value)
+        })
+    </script>
+@endpush
