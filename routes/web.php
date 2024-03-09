@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', [\App\Http\Controllers\Guest\DashboardController::class, 'index']);
+Route::get('/test', [\App\Http\Controllers\Guest\DashboardController::class, 'test']);
 
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
