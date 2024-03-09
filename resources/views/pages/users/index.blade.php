@@ -3,7 +3,7 @@
 @section('content')
     <div class="p-3">
         @role('admin')
-            <a class="btn btn-primary d-block ml-auto w-max" id='create' href='{{ route('categories.create') }}'>
+            <a class="btn btn-primary d-block ml-auto w-max" id='create' href='{{ route('users.create') }}'>
                 Create
             </a>
         @endrole
@@ -19,7 +19,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Category</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Roles</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -28,9 +30,25 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>
+                          @foreach ($item->roles as $role)
+                            @if ($role->name == 'admin')
+                            <button class="btn btn-sm btn-success">
+                            @elseif ($role->name == 'writer')
+                            <button class="btn btn-sm btn-warning">
+                            @elseif ($role->name == 'user')
+                            <button class="btn btn-sm btn-info">
+                            @else
+                            <button class="btn btn-sm btn-secondary">
+                            @endif
+                              {{$role->name}}
+                            </button>
+                          @endforeach
+                        </td>
                         <td>
                             @if (auth()->user()->hasRole('admin'))
-                                <a href="{{ route('categories.edit', $item->id) }}" class="btn w-max btn-sm btn-warning">
+                                <a href="{{ route('users.edit', $item->id) }}" class="btn w-max btn-sm btn-warning">
                                     Edit
                                 </a>
                                 <button type="button" class="btn btn-danger btn-sm w-max" data-toggle="modal" data-target="#deleteModal{{$item->id}}">
@@ -38,7 +56,7 @@
                                 </button>
                                 <div class="modal fade" id="deleteModal{{ $item->id }}" tabindex="-1"
                                     aria-labelledby="deleteModalLabel" aria-hidden="true">
-                                    <form action="{{ route('categories.destroy', $item->id) }}" method="post">
+                                    <form action="{{ route('users.destroy', $item->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <div class="modal-dialog modal-sm">
@@ -80,7 +98,7 @@
 
             if (confirmation) {
                 // If the user confirms, send a DELETE request using Fetch API
-                fetch(`/categories/${studentId}`, {
+                fetch(`/users/${studentId}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',

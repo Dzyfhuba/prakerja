@@ -11,10 +11,10 @@
         <div class="mb-3"></div>
 
         {{-- LIST RECORD --}}
-        {{-- <div class="table-responsive"> --}}
         <div class="mb-3">
-            {{ $data->links() }}
+          {{ $data->links() }}
         </div>
+        <div class="table-responsive">
         <table class="table table-sm">
             <thead>
                 <tr>
@@ -42,10 +42,10 @@
                         </td>
                         <td>
                           @if (auth()->user()->hasRole('admin') || $item->user_id == auth()->user()->id)
-                            <a href="{{ route('students.edit', $item->id) }}" class="btn w-100 btn-sm btn-warning">
+                            <a href="{{ route('students.edit', $item->id) }}" class="btn w-max btn-sm btn-warning">
                               Edit
                             </a>
-                            <button type="button" class="btn btn-danger btn-sm w-100"
+                            <button type="button" class="btn btn-danger btn-sm w-max"
                             onclick="confirmAndDelete({{ $item->id }});">
                               Delete
                             </button>
@@ -56,7 +56,7 @@
             </tbody>
         </table>
         {{ $data->links() }}
-        {{-- </div> --}}
+        </div>
     </div>
 @endsection
 

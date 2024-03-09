@@ -22,7 +22,7 @@
         }
     </script>
     <style>
-      .btn {
+        .btn {
             /* Reset styles */
             all: unset;
             /* Add your own styles if needed */
@@ -56,9 +56,10 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    {{-- <i class="fas fa-laugh-wink"></i> --}}
+                    <img src="laravel.svg" class="w-1/2 h-1/2" alt="{{env('APP_NAME')}}">
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">{{env('APP_NAME')}}</div>
             </a>
 
             <!-- Divider -->
@@ -98,7 +99,13 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
+            <li class="nav-item{{ Route::currentRouteNamed('users.index') ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('users.index') }}">
+                    <i class="fas fa-solid fa-user"></i>
+                    <span>Users</span></a>
+            </li>
+
+            {{-- <!-- Heading -->
             <div class="sidebar-heading">
                 Interface
             </div>
@@ -153,7 +160,8 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.html">Login</a>
@@ -182,14 +190,14 @@
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider d-none d-md-block"> --}}
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 
-            <!-- Sidebar Message -->
+            {{-- <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="{{ asset('sb-admin/img/undraw_rocket.svg') }}"
                     alt="...">
@@ -197,7 +205,7 @@
                     and more!</p>
                 <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
                     Pro!</a>
-            </div>
+            </div> --}}
 
         </ul>
         <!-- End of Sidebar -->
@@ -216,7 +224,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
+                    {{-- <!-- Topbar Search -->
                     <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
@@ -228,12 +236,12 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        {{-- <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -255,9 +263,9 @@
                                     </div>
                                 </form>
                             </div>
-                        </li>
+                        </li> --}}
 
-                        <!-- Nav Item - Alerts -->
+                        {{-- <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -332,7 +340,7 @@
                                     </div>
                                     <div class="font-weight-bold">
                                         <div class="text-truncate">{!! "Hi there! I am wondering if you can help me with a
-                                                                                                                                                                                                                                                    problem I\'ve been having." !!}</div>
+                                                                                                                                                                                                                                                                                            problem I\'ve been having." !!}</div>
                                         <div class="small text-gray-500">
                                             {{ 'Emily Fowler · 58m' }}</div>
                                     </div>
@@ -380,7 +388,7 @@
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More
                                     Messages</a>
                             </div>
-                        </li>
+                        </li> --}}
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -388,7 +396,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{auth()->user()->name}}</span>
                                 <img class="img-profile rounded-circle"
                                     src="{{ asset('sb-admin/img/undraw_profile.svg') }}">
                             </a>
@@ -430,7 +438,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; <a href="https://hafidzubaidillah.com" target="_blank">hafidzubaidillah.com</a> 2024</span>
                     </div>
                 </div>
             </footer>
@@ -463,14 +471,14 @@
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     <!-- <a class="btn btn-primary" href="login.html">Logout</a> -->
                     <form method="POST" action="{{ route('logout') }}">
-                    @csrf
+                        @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
+                        <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
                 </div>
             </div>
         </div>

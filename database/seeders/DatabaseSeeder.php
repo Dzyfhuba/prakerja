@@ -18,13 +18,27 @@ class DatabaseSeeder extends Seeder
    */
   public function run(): void
   {
-    $this->students();
+    // $this->students();
 
-    $this->usersAndRoles();
+    // $this->usersAndRoles();
 
-    $this->assignStudent();
+    // $this->assignStudent();
 
-    $this->postsCategoriesProducts();
+    // $this->postsCategoriesProducts();
+
+    $this->generateRoles();
+  }
+
+  function generateRoles()
+  {
+    Role::create([
+      'name' => 'user',
+      'guard_name' => 'web'
+    ]);
+    Role::create([
+      'name' => 'writer',
+      'guard_name' => 'web'
+    ]);
   }
 
   function postsCategoriesProducts()
