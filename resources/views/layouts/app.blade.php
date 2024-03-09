@@ -66,11 +66,11 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item{{ Route::currentRouteNamed('dashboard') ? ' active' : '' }}">
+            {{-- <li class="nav-item{{ Route::currentRouteNamed('dashboard') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
-            </li>
+            </li> --}}
 
             <li class="nav-item{{ Route::currentRouteNamed('posts.index') ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('posts.index') }}">
@@ -420,6 +420,10 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div> -->
+                                <a class="dropdown-item" href="/">
+                                    <i class="fas fa-globe fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Public Page
+                                </a>
                                 <a class="dropdown-item" href="#" data-toggle="modal"
                                     data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
+  Route::get('/', fn()=>redirect()->route('posts.index'))->name('dashboard');
   // Posts Routes
   Route::get('posts', [PostController::class, 'index'])->name('posts.index');
   Route::get('posts/create', [PostController::class, 'create'])->name('posts.create');
@@ -73,7 +74,6 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   });
 
 
-  Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
   Route::get('/students', [StudentController::class, 'index'])->name('students.index');
   Route::get('/students/create', [StudentController::class, 'create'])->name('students.create');
   Route::get('/students/{student}', [StudentController::class, 'show'])->name('students.show');
