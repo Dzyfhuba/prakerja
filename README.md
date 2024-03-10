@@ -22,7 +22,7 @@ This project is a Laravel-based application designed for [insert purpose]. It ai
 
 Before you begin, ensure that your development environment meets the following requirements:
 
-- PHP >= 7.4
+- PHP >= 8.2
 - Composer
 - MySQL >= 5.7
 - Docker and Docker Compose (for Docker installation only)

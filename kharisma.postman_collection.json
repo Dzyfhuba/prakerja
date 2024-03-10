@@ -1,0 +1,908 @@
+{
+	"info": {
+		"_postman_id": "ba71af09-61b8-4a02-9bdf-adf549ca858e",
+		"name": "kharisma",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19273875"
+	},
+	"item": [
+		{
+			"name": "students",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/students?search=test&orderBy=name&orderDirection=asc",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "test"
+								},
+								{
+									"key": "orderBy",
+									"value": "name"
+								},
+								{
+									"key": "orderDirection",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "base",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/students",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 04:30:51 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Michale Paucek 123\",\n            \"email\": \"abdul85@gottlieb.com\",\n            \"favorites\": [\n                \"science\",\n                \"computer\"\n            ],\n            \"created_at\": \"2023-04-25 04:06:57\",\n            \"updated_at\": \"2024-03-08 04:18:18\",\n            \"user_id\": 4\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Boris D'Amore\",\n            \"email\": \"alycia03@yahoo.com\",\n            \"favorites\": [\n                \"art\"\n            ],\n            \"created_at\": \"2023-12-09 10:29:08\",\n            \"updated_at\": \"2024-03-08 01:49:30\",\n            \"user_id\": 6\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Miss Ruthie Breitenberg DDS\",\n            \"email\": \"keebler.kirsten@dicki.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2024-02-29 06:37:43\",\n            \"updated_at\": \"2024-03-08 01:49:30\",\n            \"user_id\": 8\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Dr. Benedict Volkman V\",\n            \"email\": \"camylle.anderson@hotmail.com\",\n            \"favorites\": [\n                \"music\"\n            ],\n            \"created_at\": \"2023-07-02 08:55:48\",\n            \"updated_at\": \"2024-03-08 01:49:30\",\n            \"user_id\": 10\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Mr. Sven Stehr III\",\n            \"email\": \"beau94@yahoo.com\",\n            \"favorites\": [\n                \"art\",\n                \"science\",\n                \"social\"\n            ],\n            \"created_at\": \"2023-05-21 08:51:54\",\n            \"updated_at\": \"2023-05-21 08:51:54\",\n            \"user_id\": 2\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Eriberto Tremblay Jr.\",\n            \"email\": \"fzulauf@denesik.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-09-11 11:42:15\",\n            \"updated_at\": \"2023-09-11 11:42:15\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Halle Crist\",\n            \"email\": \"eemard@russel.com\",\n            \"favorites\": [\n                \"science\",\n                \"music\",\n                \"computer\"\n            ],\n            \"created_at\": \"2024-03-02 01:51:03\",\n            \"updated_at\": \"2024-03-02 01:51:03\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Jean Lehner\",\n            \"email\": \"kohler.thalia@kovacek.com\",\n            \"favorites\": [\n                \"music\",\n                \"science\"\n            ],\n            \"created_at\": \"2024-02-15 03:34:31\",\n            \"updated_at\": \"2024-02-15 03:34:31\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Miss Brittany Bauch\",\n            \"email\": \"earline.hagenes@hoppe.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-05-10 03:21:19\",\n            \"updated_at\": \"2023-05-10 03:21:19\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Mortimer Erdman\",\n            \"email\": \"keeling.alejandrin@hotmail.com\",\n            \"favorites\": [\n                \"art\"\n            ],\n            \"created_at\": \"2023-07-05 02:40:29\",\n            \"updated_at\": \"2023-07-05 02:40:29\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Elvis Cummings\",\n            \"email\": \"davion.hane@yahoo.com\",\n            \"favorites\": [\n                \"social\"\n            ],\n            \"created_at\": \"2023-05-28 07:37:36\",\n            \"updated_at\": \"2023-05-28 07:37:36\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Anne Hackett IV\",\n            \"email\": \"tyler09@gmail.com\",\n            \"favorites\": [\n                \"art\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-05-23 08:11:15\",\n            \"updated_at\": \"2023-05-23 08:11:15\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Nathanael Doyle\",\n            \"email\": \"darrel80@wuckert.com\",\n            \"favorites\": [\n                \"science\",\n                \"art\"\n            ],\n            \"created_at\": \"2024-03-06 10:18:49\",\n            \"updated_at\": \"2024-03-06 10:18:49\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Dejah Ratke III\",\n            \"email\": \"jhane@bailey.com\",\n            \"favorites\": [\n                \"social\"\n            ],\n            \"created_at\": \"2024-02-18 01:44:01\",\n            \"updated_at\": \"2024-02-18 01:44:01\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 16,\n            \"name\": \"Ida Kub\",\n            \"email\": \"bbashirian@hotmail.com\",\n            \"favorites\": [\n                \"music\"\n            ],\n            \"created_at\": \"2023-10-28 08:43:04\",\n            \"updated_at\": \"2023-10-28 08:43:04\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 17,\n            \"name\": \"Greta Lueilwitz\",\n            \"email\": \"zelma.wolff@kertzmann.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-07-21 12:20:25\",\n            \"updated_at\": \"2023-07-21 12:20:25\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 18,\n            \"name\": \"Prof. Jeromy Larson DDS\",\n            \"email\": \"rowland.mcclure@hotmail.com\",\n            \"favorites\": [\n                \"science\",\n                \"social\"\n            ],\n            \"created_at\": \"2024-02-29 12:27:20\",\n            \"updated_at\": \"2024-02-29 12:27:20\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 19,\n            \"name\": \"Kayla Skiles\",\n            \"email\": \"lakin.emory@gmail.com\",\n            \"favorites\": [\n                \"computer\",\n                \"science\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-06-28 04:45:53\",\n            \"updated_at\": \"2023-06-28 04:45:53\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 20,\n            \"name\": \"Hettie Jacobson V\",\n            \"email\": \"kuhic.dixie@yahoo.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-09-26 04:41:46\",\n            \"updated_at\": \"2023-09-26 04:41:46\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 21,\n            \"name\": \"Roslyn Bayer\",\n            \"email\": \"ratke.elza@yahoo.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2024-01-20 12:09:25\",\n            \"updated_at\": \"2024-01-20 12:09:25\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 22,\n            \"name\": \"Deion Oberbrunner\",\n            \"email\": \"nels39@hotmail.com\",\n            \"favorites\": [\n                \"social\"\n            ],\n            \"created_at\": \"2023-06-14 10:42:26\",\n            \"updated_at\": \"2023-06-14 10:42:26\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 23,\n            \"name\": \"Mr. Archibald Parisian Sr.\",\n            \"email\": \"jwintheiser@buckridge.com\",\n            \"favorites\": [\n                \"computer\",\n                \"science\",\n                \"art\"\n            ],\n            \"created_at\": \"2023-08-05 07:15:05\",\n            \"updated_at\": \"2023-08-05 07:15:05\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 24,\n            \"name\": \"Julian Block\",\n            \"email\": \"abbott.aliza@gmail.com\",\n            \"favorites\": [\n                \"social\"\n            ],\n            \"created_at\": \"2023-04-05 04:49:40\",\n            \"updated_at\": \"2023-04-05 04:49:40\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 25,\n            \"name\": \"Al Schmidt\",\n            \"email\": \"macy46@hessel.org\",\n            \"favorites\": [\n                \"social\",\n                \"science\",\n                \"computer\"\n            ],\n            \"created_at\": \"2023-08-03 10:01:56\",\n            \"updated_at\": \"2023-08-03 10:01:56\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 26,\n            \"name\": \"Ethan Hahn\",\n            \"email\": \"armstrong.jamison@hotmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-04-26 02:57:43\",\n            \"updated_at\": \"2023-04-26 02:57:43\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 27,\n            \"name\": \"Ms. Tamia Trantow\",\n            \"email\": \"zmorar@yahoo.com\",\n            \"favorites\": [\n                \"computer\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-07-02 12:49:11\",\n            \"updated_at\": \"2023-07-02 12:49:11\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 28,\n            \"name\": \"Dr. Kenyatta Crooks MD\",\n            \"email\": \"terrence35@hotmail.com\",\n            \"favorites\": [\n                \"science\",\n                \"social\",\n                \"art\"\n            ],\n            \"created_at\": \"2023-07-06 08:05:45\",\n            \"updated_at\": \"2023-07-06 08:05:45\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 29,\n            \"name\": \"Deven Baumbach\",\n            \"email\": \"sophia.baumbach@hotmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2024-01-13 04:44:06\",\n            \"updated_at\": \"2024-01-13 04:44:06\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 30,\n            \"name\": \"Margret Lindgren\",\n            \"email\": \"jailyn.kulas@doyle.net\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-08-06 06:44:04\",\n            \"updated_at\": \"2023-08-06 06:44:04\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 31,\n            \"name\": \"Mikel Lehner\",\n            \"email\": \"burdette.lesch@fritsch.net\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2024-01-01 08:52:53\",\n            \"updated_at\": \"2024-01-01 08:52:53\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 32,\n            \"name\": \"Odie Hansen\",\n            \"email\": \"dimitri.baumbach@yahoo.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2024-02-12 03:46:30\",\n            \"updated_at\": \"2024-02-12 03:46:30\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 33,\n            \"name\": \"Mr. Maximillian Little DVM\",\n            \"email\": \"rcole@gmail.com\",\n            \"favorites\": [\n                \"science\",\n                \"computer\",\n                \"social\"\n            ],\n            \"created_at\": \"2023-09-25 02:32:55\",\n            \"updated_at\": \"2023-09-25 02:32:55\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 34,\n            \"name\": \"Dr. Virgie Bartell\",\n            \"email\": \"jenkins.waino@yahoo.com\",\n            \"favorites\": [\n                \"art\"\n            ],\n            \"created_at\": \"2023-04-09 01:09:47\",\n            \"updated_at\": \"2023-04-09 01:09:47\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 35,\n            \"name\": \"Alec Franecki\",\n            \"email\": \"gillian91@gmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2024-01-23 06:09:18\",\n            \"updated_at\": \"2024-01-23 06:09:18\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 36,\n            \"name\": \"Wilfrid Hackett\",\n            \"email\": \"fquigley@rohan.info\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-06-24 04:45:41\",\n            \"updated_at\": \"2023-06-24 04:45:41\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 37,\n            \"name\": \"Tre Bauch\",\n            \"email\": \"sbogan@gmail.com\",\n            \"favorites\": [\n                \"music\",\n                \"social\",\n                \"science\"\n            ],\n            \"created_at\": \"2023-03-26 11:40:25\",\n            \"updated_at\": \"2023-03-26 11:40:25\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 38,\n            \"name\": \"Leonie Gutkowski\",\n            \"email\": \"lexie.predovic@yahoo.com\",\n            \"favorites\": [\n                \"computer\",\n                \"science\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-08-29 01:32:41\",\n            \"updated_at\": \"2023-08-29 01:32:41\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 39,\n            \"name\": \"Golda Stamm\",\n            \"email\": \"kovacek.demetris@gmail.com\",\n            \"favorites\": [\n                \"science\"\n            ],\n            \"created_at\": \"2023-11-14 09:46:10\",\n            \"updated_at\": \"2023-11-14 09:46:10\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 40,\n            \"name\": \"Jarvis Gottlieb\",\n            \"email\": \"stoltenberg.triston@yahoo.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2024-03-06 07:35:48\",\n            \"updated_at\": \"2024-03-06 07:35:48\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 41,\n            \"name\": \"Alta Homenick\",\n            \"email\": \"lavon.denesik@vandervort.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-07-01 02:08:47\",\n            \"updated_at\": \"2023-07-01 02:08:47\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 42,\n            \"name\": \"Hillary Crooks\",\n            \"email\": \"kutch.eliezer@gmail.com\",\n            \"favorites\": [\n                \"social\",\n                \"art\"\n            ],\n            \"created_at\": \"2024-02-25 07:44:25\",\n            \"updated_at\": \"2024-02-25 07:44:25\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 43,\n            \"name\": \"Kayden Schaden\",\n            \"email\": \"fkoepp@yahoo.com\",\n            \"favorites\": [\n                \"social\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-06-01 02:40:54\",\n            \"updated_at\": \"2023-06-01 02:40:54\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 44,\n            \"name\": \"Alessandro Christiansen\",\n            \"email\": \"edgardo70@heidenreich.biz\",\n            \"favorites\": [\n                \"music\"\n            ],\n            \"created_at\": \"2023-12-16 11:51:39\",\n            \"updated_at\": \"2023-12-16 11:51:39\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 45,\n            \"name\": \"Prof. Mallie Gutmann\",\n            \"email\": \"cielo.muller@gmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-08-02 11:30:31\",\n            \"updated_at\": \"2023-08-02 11:30:31\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 46,\n            \"name\": \"Sigrid Mueller DVM\",\n            \"email\": \"boyle.garth@adams.com\",\n            \"favorites\": [\n                \"art\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-09-12 02:21:53\",\n            \"updated_at\": \"2023-09-12 02:21:53\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 47,\n            \"name\": \"Miss Vallie Ortiz V\",\n            \"email\": \"weldon89@wehner.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-07-29 08:59:54\",\n            \"updated_at\": \"2023-07-29 08:59:54\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 48,\n            \"name\": \"Deborah Ondricka I\",\n            \"email\": \"wruecker@yahoo.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-11-13 03:46:22\",\n            \"updated_at\": \"2023-11-13 03:46:22\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 49,\n            \"name\": \"Dr. Lucy Barrows MD\",\n            \"email\": \"elynch@kemmer.com\",\n            \"favorites\": [\n                \"art\",\n                \"computer\"\n            ],\n            \"created_at\": \"2023-06-21 12:38:33\",\n            \"updated_at\": \"2023-06-21 12:38:33\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 50,\n            \"name\": \"Rudy Rau\",\n            \"email\": \"freeda59@hotmail.com\",\n            \"favorites\": [\n                \"social\"\n            ],\n            \"created_at\": \"2023-08-20 04:18:55\",\n            \"updated_at\": \"2023-08-20 04:18:55\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 51,\n            \"name\": \"Adriana Funk\",\n            \"email\": \"phyllis.lang@gmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-09-23 07:41:48\",\n            \"updated_at\": \"2023-09-23 07:41:48\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 52,\n            \"name\": \"Alexander Frami\",\n            \"email\": \"kelly.paucek@metz.net\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-07-26 02:21:51\",\n            \"updated_at\": \"2023-07-26 02:21:51\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 53,\n            \"name\": \"Katrine Hills\",\n            \"email\": \"sabrina.stanton@emard.info\",\n            \"favorites\": [\n                \"social\"\n            ],\n            \"created_at\": \"2023-12-17 06:02:47\",\n            \"updated_at\": \"2023-12-17 06:02:47\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 54,\n            \"name\": \"Mrs. Trinity Reinger PhD\",\n            \"email\": \"oweimann@hotmail.com\",\n            \"favorites\": [\n                \"music\"\n            ],\n            \"created_at\": \"2023-05-02 08:39:29\",\n            \"updated_at\": \"2023-05-02 08:39:29\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 55,\n            \"name\": \"Dr. Quinn Johnston DDS\",\n            \"email\": \"blanda.kale@hotmail.com\",\n            \"favorites\": [\n                \"science\",\n                \"computer\"\n            ],\n            \"created_at\": \"2023-11-24 02:14:53\",\n            \"updated_at\": \"2023-11-24 02:14:53\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 56,\n            \"name\": \"Blanca Waelchi\",\n            \"email\": \"alanis.parisian@mcglynn.com\",\n            \"favorites\": [\n                \"art\"\n            ],\n            \"created_at\": \"2023-10-31 09:48:22\",\n            \"updated_at\": \"2023-10-31 09:48:22\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 57,\n            \"name\": \"Jace Williamson\",\n            \"email\": \"berniece92@yahoo.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-10-23 09:36:12\",\n            \"updated_at\": \"2023-10-23 09:36:12\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 58,\n            \"name\": \"Zane Considine\",\n            \"email\": \"mann.susanna@yahoo.com\",\n            \"favorites\": [\n                \"social\"\n            ],\n            \"created_at\": \"2023-03-31 02:38:03\",\n            \"updated_at\": \"2023-03-31 02:38:03\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 59,\n            \"name\": \"Columbus Moen\",\n            \"email\": \"kenton.fahey@yahoo.com\",\n            \"favorites\": [\n                \"art\",\n                \"computer\"\n            ],\n            \"created_at\": \"2023-05-05 02:15:04\",\n            \"updated_at\": \"2023-05-05 02:15:04\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 60,\n            \"name\": \"Mr. Gene Zieme\",\n            \"email\": \"aiyana93@hotmail.com\",\n            \"favorites\": [\n                \"computer\",\n                \"science\",\n                \"social\"\n            ],\n            \"created_at\": \"2024-02-03 05:38:26\",\n            \"updated_at\": \"2024-02-03 05:38:26\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 61,\n            \"name\": \"Ms. Dakota Crist PhD\",\n            \"email\": \"wolff.samanta@yahoo.com\",\n            \"favorites\": [\n                \"music\",\n                \"art\"\n            ],\n            \"created_at\": \"2023-03-10 01:24:56\",\n            \"updated_at\": \"2023-03-10 01:24:56\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 62,\n            \"name\": \"Madisyn Fisher\",\n            \"email\": \"walter.lois@blick.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-05-28 02:26:54\",\n            \"updated_at\": \"2023-05-28 02:26:54\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 63,\n            \"name\": \"Dr. Trever Volkman V\",\n            \"email\": \"rschneider@daniel.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-12-10 11:25:30\",\n            \"updated_at\": \"2023-12-10 11:25:30\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 64,\n            \"name\": \"Kasandra Schoen\",\n            \"email\": \"jamison25@gmail.com\",\n            \"favorites\": [\n                \"computer\",\n                \"social\"\n            ],\n            \"created_at\": \"2023-04-17 02:32:08\",\n            \"updated_at\": \"2023-04-17 02:32:08\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 65,\n            \"name\": \"Edgar Mante\",\n            \"email\": \"slowe@steuber.com\",\n            \"favorites\": [\n                \"computer\",\n                \"science\"\n            ],\n            \"created_at\": \"2023-08-18 07:00:29\",\n            \"updated_at\": \"2023-08-18 07:00:29\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 66,\n            \"name\": \"Brooke Reinger\",\n            \"email\": \"ffriesen@gmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-12-02 08:28:18\",\n            \"updated_at\": \"2023-12-02 08:28:18\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 67,\n            \"name\": \"Dr. Emma Heller\",\n            \"email\": \"marilou.bartoletti@yahoo.com\",\n            \"favorites\": [\n                \"social\",\n                \"art\",\n                \"music\"\n            ],\n            \"created_at\": \"2024-02-27 08:00:00\",\n            \"updated_at\": \"2024-02-27 08:00:00\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 68,\n            \"name\": \"Shaun Heller\",\n            \"email\": \"leta.koch@barton.org\",\n            \"favorites\": [\n                \"computer\",\n                \"social\"\n            ],\n            \"created_at\": \"2023-04-26 01:58:22\",\n            \"updated_at\": \"2023-04-26 01:58:22\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 69,\n            \"name\": \"Zelma Moen\",\n            \"email\": \"asa.oreilly@pfeffer.net\",\n            \"favorites\": [\n                \"science\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-06-22 01:39:41\",\n            \"updated_at\": \"2023-06-22 01:39:41\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 70,\n            \"name\": \"Willa Douglas\",\n            \"email\": \"reichert.gail@purdy.org\",\n            \"favorites\": [\n                \"science\"\n            ],\n            \"created_at\": \"2023-06-04 07:39:38\",\n            \"updated_at\": \"2023-06-04 07:39:38\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 71,\n            \"name\": \"Vicky Robel\",\n            \"email\": \"terrence04@hudson.com\",\n            \"favorites\": [\n                \"social\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-12-23 06:03:26\",\n            \"updated_at\": \"2023-12-23 06:03:26\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 72,\n            \"name\": \"Mr. Weston Leuschke\",\n            \"email\": \"jon94@kilback.com\",\n            \"favorites\": [\n                \"art\"\n            ],\n            \"created_at\": \"2023-06-05 02:31:49\",\n            \"updated_at\": \"2023-06-05 02:31:49\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 73,\n            \"name\": \"Kiera Aufderhar DVM\",\n            \"email\": \"goodwin.maxime@tremblay.com\",\n            \"favorites\": [\n                \"social\",\n                \"computer\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-08-16 09:09:37\",\n            \"updated_at\": \"2023-08-16 09:09:37\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 74,\n            \"name\": \"Hal Blanda\",\n            \"email\": \"edmond.johnston@labadie.org\",\n            \"favorites\": [\n                \"music\",\n                \"social\",\n                \"science\"\n            ],\n            \"created_at\": \"2023-07-22 12:55:57\",\n            \"updated_at\": \"2023-07-22 12:55:57\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 75,\n            \"name\": \"Constance Koss\",\n            \"email\": \"durgan.nick@yost.com\",\n            \"favorites\": [\n                \"music\",\n                \"computer\"\n            ],\n            \"created_at\": \"2023-11-02 09:21:20\",\n            \"updated_at\": \"2023-11-02 09:21:20\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 76,\n            \"name\": \"Dr. Jared Bailey\",\n            \"email\": \"deshawn92@hotmail.com\",\n            \"favorites\": [\n                \"social\"\n            ],\n            \"created_at\": \"2023-04-11 05:44:17\",\n            \"updated_at\": \"2023-04-11 05:44:17\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 77,\n            \"name\": \"Curt Rowe\",\n            \"email\": \"turcotte.emely@yahoo.com\",\n            \"favorites\": [\n                \"art\",\n                \"social\",\n                \"music\"\n            ],\n            \"created_at\": \"2024-01-17 10:22:19\",\n            \"updated_at\": \"2024-01-17 10:22:19\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 78,\n            \"name\": \"Elody Beer\",\n            \"email\": \"gharber@hotmail.com\",\n            \"favorites\": [\n                \"computer\",\n                \"art\"\n            ],\n            \"created_at\": \"2023-04-27 07:23:53\",\n            \"updated_at\": \"2023-04-27 07:23:53\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 79,\n            \"name\": \"Mr. Bennie Witting DVM\",\n            \"email\": \"christophe.boyle@gmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-05-13 08:02:53\",\n            \"updated_at\": \"2023-05-13 08:02:53\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 80,\n            \"name\": \"Robin Bruen\",\n            \"email\": \"trey88@hotmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2024-03-05 04:08:47\",\n            \"updated_at\": \"2024-03-05 04:08:47\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 81,\n            \"name\": \"Jamal Stoltenberg\",\n            \"email\": \"kling.deon@hotmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-09-15 03:06:26\",\n            \"updated_at\": \"2023-09-15 03:06:26\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 82,\n            \"name\": \"Sydney Gutmann\",\n            \"email\": \"akilback@ledner.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-12-11 02:37:21\",\n            \"updated_at\": \"2023-12-11 02:37:21\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 83,\n            \"name\": \"Prof. Anya Carter Jr.\",\n            \"email\": \"weimann.dortha@gmail.com\",\n            \"favorites\": [\n                \"computer\"\n            ],\n            \"created_at\": \"2023-10-11 05:04:45\",\n            \"updated_at\": \"2023-10-11 05:04:45\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 84,\n            \"name\": \"Thad Schimmel\",\n            \"email\": \"littel.judah@ruecker.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-10-11 04:50:29\",\n            \"updated_at\": \"2023-10-11 04:50:29\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 85,\n            \"name\": \"Justyn McLaughlin DDS\",\n            \"email\": \"lamont65@yahoo.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-10-03 10:41:17\",\n            \"updated_at\": \"2023-10-03 10:41:17\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 86,\n            \"name\": \"Laurel Schimmel\",\n            \"email\": \"cyril.rutherford@oconner.com\",\n            \"favorites\": [\n                \"science\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-06-13 02:23:38\",\n            \"updated_at\": \"2023-06-13 02:23:38\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 87,\n            \"name\": \"Sammy Bergnaum\",\n            \"email\": \"fparisian@hotmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-12-02 07:55:43\",\n            \"updated_at\": \"2023-12-02 07:55:43\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 88,\n            \"name\": \"Danyka Bailey\",\n            \"email\": \"jonathan.herman@murazik.com\",\n            \"favorites\": [\n                \"computer\",\n                \"art\"\n            ],\n            \"created_at\": \"2023-12-05 10:37:04\",\n            \"updated_at\": \"2023-12-05 10:37:04\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 89,\n            \"name\": \"Dr. Carolina Dietrich Jr.\",\n            \"email\": \"ford.jacobs@monahan.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-04-24 05:52:20\",\n            \"updated_at\": \"2023-04-24 05:52:20\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 90,\n            \"name\": \"Ms. Alia West\",\n            \"email\": \"beier.adrienne@pagac.info\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-11-28 06:43:59\",\n            \"updated_at\": \"2023-11-28 06:43:59\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 91,\n            \"name\": \"Rafael Schmeler\",\n            \"email\": \"vesta99@hotmail.com\",\n            \"favorites\": [\n                \"music\",\n                \"social\",\n                \"art\"\n            ],\n            \"created_at\": \"2023-03-26 03:37:13\",\n            \"updated_at\": \"2023-03-26 03:37:13\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 92,\n            \"name\": \"Prof. Alessandra Durgan\",\n            \"email\": \"gdicki@gmail.com\",\n            \"favorites\": [\n                \"computer\",\n                \"art\"\n            ],\n            \"created_at\": \"2023-05-07 10:05:26\",\n            \"updated_at\": \"2023-05-07 10:05:26\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 93,\n            \"name\": \"Dr. Jacinto Price\",\n            \"email\": \"hahn.merl@yahoo.com\",\n            \"favorites\": [\n                \"computer\"\n            ],\n            \"created_at\": \"2023-07-14 07:44:18\",\n            \"updated_at\": \"2023-07-14 07:44:18\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 94,\n            \"name\": \"Kennith Prohaska MD\",\n            \"email\": \"hahn.titus@yahoo.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-09-06 07:43:55\",\n            \"updated_at\": \"2023-09-06 07:43:55\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 95,\n            \"name\": \"Mr. Kyleigh Murray Sr.\",\n            \"email\": \"flegros@aufderhar.net\",\n            \"favorites\": [\n                \"computer\",\n                \"art\"\n            ],\n            \"created_at\": \"2023-12-18 12:09:44\",\n            \"updated_at\": \"2023-12-18 12:09:44\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 96,\n            \"name\": \"Ms. Maia Lowe\",\n            \"email\": \"mariam33@parker.biz\",\n            \"favorites\": [\n                \"science\"\n            ],\n            \"created_at\": \"2023-12-28 10:30:01\",\n            \"updated_at\": \"2023-12-28 10:30:01\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 97,\n            \"name\": \"Sarina Feeney\",\n            \"email\": \"atreutel@hotmail.com\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-03-10 03:57:11\",\n            \"updated_at\": \"2023-03-10 03:57:11\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 98,\n            \"name\": \"Misty Lehner\",\n            \"email\": \"zboncak.sterling@oconner.biz\",\n            \"favorites\": [\n                \"music\",\n                \"social\",\n                \"science\"\n            ],\n            \"created_at\": \"2023-10-19 10:11:54\",\n            \"updated_at\": \"2023-10-19 10:11:54\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 99,\n            \"name\": \"Liliane Harris\",\n            \"email\": \"kfeeney@yahoo.com\",\n            \"favorites\": [\n                \"art\",\n                \"computer\",\n                \"music\"\n            ],\n            \"created_at\": \"2023-06-07 09:16:35\",\n            \"updated_at\": \"2023-06-07 09:16:35\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 100,\n            \"name\": \"Nathan Gutkowski\",\n            \"email\": \"vwuckert@gmail.com\",\n            \"favorites\": [\n                \"art\"\n            ],\n            \"created_at\": \"2023-12-01 01:32:14\",\n            \"updated_at\": \"2023-12-01 01:32:14\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 101,\n            \"name\": \"Prof. Winston Reichert III\",\n            \"email\": \"meaghan12@hotmail.com\",\n            \"favorites\": [\n                \"art\"\n            ],\n            \"created_at\": \"2023-10-27 05:39:07\",\n            \"updated_at\": \"2023-10-27 05:39:07\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 102,\n            \"name\": \"Ubaidillahasdasd\",\n            \"email\": \"alamrohmangarden@gmail.com\",\n            \"favorites\": [\n                \"science\",\n                \"computer\"\n            ],\n            \"created_at\": \"2024-03-08 12:54:28\",\n            \"updated_at\": \"2024-03-08 01:03:20\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 103,\n            \"name\": \"Ubaidillahasd\",\n            \"email\": \"admin@gmail.com\",\n            \"favorites\": [\n                \"science\",\n                \"computer\",\n                \"music\"\n            ],\n            \"created_at\": \"2024-03-08 01:08:29\",\n            \"updated_at\": \"2024-03-08 01:08:29\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 104,\n            \"name\": \"Alam Rohman Garden\",\n            \"email\": \"admin@gmail.comasd\",\n            \"favorites\": [\n                \"computer\",\n                \"music\"\n            ],\n            \"created_at\": \"2024-03-08 02:12:47\",\n            \"updated_at\": \"2024-03-08 02:12:47\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 105,\n            \"name\": \"test\",\n            \"email\": \"test02@gmail.com\",\n            \"favorites\": [\n                \"computer\",\n                \"music\"\n            ],\n            \"created_at\": \"2024-03-08 02:13:44\",\n            \"updated_at\": \"2024-03-08 02:13:44\",\n            \"user_id\": 12\n        },\n        {\n            \"id\": 106,\n            \"name\": \"Alam Rohman Gardenasd\",\n            \"email\": \"asdad@mail.com\",\n            \"favorites\": [\n                \"science\",\n                \"computer\"\n            ],\n            \"created_at\": \"2024-03-08 04:09:33\",\n            \"updated_at\": \"2024-03-08 04:09:33\",\n            \"user_id\": 13\n        }\n    ]\n}"
+						},
+						{
+							"name": "search & order",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/students?search=Pau&orderBy=name&orderDirection=asc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "Pau"
+										},
+										{
+											"key": "orderBy",
+											"value": "name"
+										},
+										{
+											"key": "orderDirection",
+											"value": "asc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 04:37:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 52,\n            \"name\": \"Alexander Frami\",\n            \"email\": \"kelly.paucek@metz.net\",\n            \"favorites\": [\n                \"0\"\n            ],\n            \"created_at\": \"2023-07-26 02:21:51\",\n            \"updated_at\": \"2023-07-26 02:21:51\",\n            \"user_id\": null\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Michale Paucek 123\",\n            \"email\": \"abdul85@gottlieb.com\",\n            \"favorites\": [\n                \"science\",\n                \"computer\"\n            ],\n            \"created_at\": \"2023-04-25 04:06:57\",\n            \"updated_at\": \"2024-03-08 04:18:18\",\n            \"user_id\": 4\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/students/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "item success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/students/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 05:59:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": 2,\n        \"name\": \"Michale Paucek 123\",\n        \"email\": \"abdul85@gottlieb.com\",\n        \"favorites\": [\n            \"science\",\n            \"computer\"\n        ],\n        \"created_at\": \"2023-04-25 04:06:57\",\n        \"updated_at\": \"2024-03-08 04:18:18\",\n        \"user_id\": 4\n    }\n}"
+						},
+						{
+							"name": "item no content",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/students/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students",
+										"1"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 05:59:51 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "store",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test2\",\n    \"email\": \"test02@gmail.com\",\n    \"favorites\": [\"music\", \"po\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/students",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "store form data success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "Test1",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "test1@mail.com",
+											"type": "text"
+										},
+										{
+											"key": "favorites[]",
+											"value": "art",
+											"type": "text"
+										},
+										{
+											"key": "favorites[]",
+											"value": "computer",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{host}}/students",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 04:42:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "56"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"name\": \"Test1\",\n        \"email\": \"test1@mail.com\",\n        \"favorites\": [\n            \"art\",\n            \"computer\"\n        ],\n        \"updated_at\": \"2024-03-08 04:42:15\",\n        \"created_at\": \"2024-03-08 04:42:15\",\n        \"id\": 107\n    }\n}"
+						},
+						{
+							"name": "store json failed",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test2\",\n    \"email\": \"test02@gmail.com\",\n    \"favorites\": [\"music\", \"po\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/students",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 05:46:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation failed\",\n    \"errors\": {\n        \"email\": [\n            \"The email has already been taken.\"\n        ],\n        \"favorites\": [\n            \"favorites contains an invalid value.\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test223132\",\n    \"email\": \"test03@gmail.com\",\n    \"favorites\": [\"music\", \"asd\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/students/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "update success",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test223132\",\n    \"email\": \"test03@gmail.com\",\n    \"favorites\": [\"music\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/students/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students",
+										"2"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 06:18:23 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": 2,\n        \"name\": \"Test223132\",\n        \"email\": \"test03@gmail.com\",\n        \"favorites\": [\n            \"music\"\n        ],\n        \"created_at\": \"2023-04-25 04:06:57\",\n        \"updated_at\": \"2024-03-08 06:18:23\",\n        \"user_id\": 4\n    }\n}"
+						},
+						{
+							"name": "update validation error",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test223132\",\n    \"email\": \"test03@gmail.com\",\n    \"favorites\": [\"music\", \"asd\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/students/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students",
+										"2"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 06:19:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Validation failed\",\n    \"errors\": {\n        \"favorites\": [\n            \"favorites contains an invalid value.\"\n        ]\n    }\n}"
+						},
+						{
+							"name": "update not found",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test223132\",\n    \"email\": \"test03@gmail.com\",\n    \"favorites\": [\"music\", \"asd\"]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/students/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "date",
+									"value": "Fri, 08 Mar 2024 06:19:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <title>Not Found</title>\n        <style>\n            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}code{font-family:monospace,monospace;font-size:1em}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}code{font-family:Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-gray-400{--border-opacity:1;border-color:#cbd5e0;border-color:rgba(203,213,224,var(--border-opacity))}.border-t{border-top-width:1px}.border-r{border-right-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-xl{max-width:36rem}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.uppercase{text-transform:uppercase}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.tracking-wider{letter-spacing:.05em}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@-webkit-keyframes spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@-webkit-keyframes ping{0%{transform:scale(1);opacity:1}75%,to{transform:scale(2);opacity:0}}@keyframes ping{0%{transform:scale(1);opacity:1}75%,to{transform:scale(2);opacity:0}}@-webkit-keyframes pulse{0%,to{opacity:1}50%{opacity:.5}}@keyframes pulse{0%,to{opacity:1}50%{opacity:.5}}@-webkit-keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:translateY(0);-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:translateY(0);-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@media (min-width:640px){.sm\\:rounded-lg{border-radius:.5rem}.sm\\:block{display:block}.sm\\:items-center{align-items:center}.sm\\:justify-start{justify-content:flex-start}.sm\\:justify-between{justify-content:space-between}.sm\\:h-20{height:5rem}.sm\\:ml-0{margin-left:0}.sm\\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\\:pt-0{padding-top:0}.sm\\:text-left{text-align:left}.sm\\:text-right{text-align:right}}@media (min-width:768px){.md\\:border-t-0{border-top-width:0}.md\\:border-l{border-left-width:1px}.md\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}\n        </style>\n        <style>\n            body {\n                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\";\n            }\n        </style>\n    </head>\n    <body class=\"antialiased\">\n        <div class=\"relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0\">\n            <div class=\"max-w-xl mx-auto sm:px-6 lg:px-8\">\n                <div class=\"flex items-center pt-8 sm:justify-start sm:pt-0\">\n                    <div class=\"px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider\">\n                        404                    </div>\n                    <div class=\"ml-4 text-lg text-gray-500 uppercase tracking-wider\">\n                        Not Found                    </div>\n                </div>\n            </div>\n        </div>\n    </body>\n</html>"
+						}
+					]
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/students/3",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"students",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/students/3",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 08 Mar 2024 06:20:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"item\": {\n        \"id\": 3,\n        \"name\": \"Boris D'Amore\",\n        \"email\": \"alycia03@yahoo.com\",\n        \"favorites\": [\n            \"art\"\n        ],\n        \"created_at\": \"2023-12-09 10:29:08\",\n        \"updated_at\": \"2024-03-08 01:49:30\",\n        \"user_id\": 6\n    }\n}"
+						},
+						{
+							"name": "delete not found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/students/3",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"students",
+										"3"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Host",
+									"value": "localhost"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.3-1+ubuntu22.04.1+deb.sury.org+1"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "date",
+									"value": "Fri, 08 Mar 2024 06:20:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=UTF-8"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"utf-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n        <title>Not Found</title>\n        <style>\n            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}code{font-family:monospace,monospace;font-size:1em}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}code{font-family:Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-gray-400{--border-opacity:1;border-color:#cbd5e0;border-color:rgba(203,213,224,var(--border-opacity))}.border-t{border-top-width:1px}.border-r{border-right-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-xl{max-width:36rem}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.uppercase{text-transform:uppercase}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.tracking-wider{letter-spacing:.05em}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@-webkit-keyframes spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@keyframes spin{0%{transform:rotate(0deg)}to{transform:rotate(1turn)}}@-webkit-keyframes ping{0%{transform:scale(1);opacity:1}75%,to{transform:scale(2);opacity:0}}@keyframes ping{0%{transform:scale(1);opacity:1}75%,to{transform:scale(2);opacity:0}}@-webkit-keyframes pulse{0%,to{opacity:1}50%{opacity:.5}}@keyframes pulse{0%,to{opacity:1}50%{opacity:.5}}@-webkit-keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:translateY(0);-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@keyframes bounce{0%,to{transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(.8,0,1,1);animation-timing-function:cubic-bezier(.8,0,1,1)}50%{transform:translateY(0);-webkit-animation-timing-function:cubic-bezier(0,0,.2,1);animation-timing-function:cubic-bezier(0,0,.2,1)}}@media (min-width:640px){.sm\\:rounded-lg{border-radius:.5rem}.sm\\:block{display:block}.sm\\:items-center{align-items:center}.sm\\:justify-start{justify-content:flex-start}.sm\\:justify-between{justify-content:space-between}.sm\\:h-20{height:5rem}.sm\\:ml-0{margin-left:0}.sm\\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\\:pt-0{padding-top:0}.sm\\:text-left{text-align:left}.sm\\:text-right{text-align:right}}@media (min-width:768px){.md\\:border-t-0{border-top-width:0}.md\\:border-l{border-left-width:1px}.md\\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}\n        </style>\n        <style>\n            body {\n                font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\";\n            }\n        </style>\n    </head>\n    <body class=\"antialiased\">\n        <div class=\"relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0\">\n            <div class=\"max-w-xl mx-auto sm:px-6 lg:px-8\">\n                <div class=\"flex items-center pt-8 sm:justify-start sm:pt-0\">\n                    <div class=\"px-4 text-lg text-gray-500 border-r border-gray-400 tracking-wider\">\n                        404                    </div>\n                    <div class=\"ml-4 text-lg text-gray-500 uppercase tracking-wider\">\n                        Not Found                    </div>\n                </div>\n            </div>\n        </div>\n    </body>\n</html>"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "root",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}",
+					"host": [
+						"{{host}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost/api",
+			"type": "string"
+		}
+	]
+}
