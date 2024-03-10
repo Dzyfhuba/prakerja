@@ -38,7 +38,7 @@ class DashboardController extends Controller
 
   public function product(Product $product)
   {
-    $products = Product::query()->whereNot('id', $product->id)->inRandomOrder($this->seed)->limit(5)->get();
+    $products = Product::query()->whereNot('id', $product->id)->where('category_id', $product->category_id)->inRandomOrder($this->seed)->limit(5)->get();
     $posts = Post::query()->inRandomOrder($this->seed)->limit(5)->get();
     return inertia('Product', [
       'item' => $product,
