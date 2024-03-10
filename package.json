@@ -8,6 +8,7 @@
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",
+        "@tailwindcss/typography": "^0.5.10",
         "@types/react-dom": "^18.2.21",
         "@types/ziggy-js": "^1.8.0",
         "alpinejs": "^3.4.2",
@@ -31,6 +32,7 @@
         "react-zoom-pan-pinch": "^3.4.3",
         "sweetalert2": "^11.10.6",
         "swiper": "^11.0.7",
+        "usehooks-ts": "^3.0.1",
         "ziggy-js": "^2.0.4"
     }
 }

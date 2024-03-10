@@ -2,7 +2,7 @@ export default interface Product {
   id?: number
   name?: string
   slug?: string
-  images?: string
+  images?: string[]
   price?: number
   description?: string
   category_id?: string

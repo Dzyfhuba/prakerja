@@ -7,15 +7,22 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class DashboardController extends Controller
 {
+  protected $seed;
+  public function __construct() {
+    $seed = Cache::get('seed', random_int(1, 5));
+    if (!Cache::has('seed')) Cache::put('seed', $seed, now()->addHour());
+    $this->seed = $seed;
+  }
   public function index()
   {
-    $posts = Post::query()->orderBy('updated_at', 'desc')->limit(5)->with('user')->get();
+    $posts = Post::query()->inRandomOrder($this->seed)->limit(5)->with('user')->get();
     $categories = Category::query()
-      ->orderBy('updated_at', 'desc')->has('products')->with('products')->get();
-    $products = Product::query()->orderBy('updated_at', 'desc')->limit(5)->get();
+      ->inRandomOrder($this->seed)->has('products')->with('products')->get();
+    $products = Product::query()->inRandomOrder($this->seed)->limit(5)->get();
     return inertia('Dashboard', [
       'posts' => $posts,
       'categories' => $categories,
@@ -25,5 +32,23 @@ class DashboardController extends Controller
   public function test()
   {
     return inertia('Test');
+  }
+
+  public function product(Product $product)
+  {
+    $products = Product::query()->whereNot('id', $product->id)->inRandomOrder($this->seed)->limit(5)->get();
+    $posts = Post::query()->inRandomOrder($this->seed)->limit(5)->get();
+    return inertia('Product', [
+      'item' => $product,
+      'products' => $products,
+      'posts' => $posts,
+    ]);
+  }
+
+  public function post(Post $post)
+  {
+    return inertia('Post', [
+      'item' => $post
+    ]);
   }
 }

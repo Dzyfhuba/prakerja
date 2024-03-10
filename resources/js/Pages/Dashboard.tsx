@@ -14,25 +14,17 @@ import { formatCurrency } from '@/Helpers'
 import Image from '@/Components/Image'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import Heros from '@/Components/Heros'
+import Post from '@/types/post'
 
 interface Props extends PageProps {
-  posts?: {
-    id?: number
-    title?: string
-    slug?: string
-    content?: string
-    user_id?: number
-    user?: User
-    created_at?: string
-    updated_at?: string
-  }[]
+  posts?: Post[]
   categories?: (Category & {
     products?: Product[]
   })[]
   products?: Product[]
 }
 
-const Dashboard = (props: Props) => {
+const DashboardPage = (props: Props) => {
   const [postsLimit, setPostsLimit] = useState(true)
 
   return (
@@ -86,9 +78,9 @@ const Dashboard = (props: Props) => {
           {props.posts?.slice(0, postsLimit ? 3 : props.posts.length + 1).map(p => (
             <div className="bg-base-200 p-3 rounded-xl flex flex-col" key={p.id}>
               <Link href={`/posts/${p.slug}`} className='link-hover'>
-                <h2 className='font-bold'>{p.title}</h2>
+                <h2 className='font-bold text-xl'>{p.title}</h2>
               </Link>
-              <div className='line-clamp-2'>
+              <div className='line-clamp-2 text-xs'>
                 <Markdown>
                   {p.content}
                 </Markdown>
@@ -108,4 +100,4 @@ const Dashboard = (props: Props) => {
 }
 
 
-export default Dashboard
+export default DashboardPage

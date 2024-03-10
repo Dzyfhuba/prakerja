@@ -35,14 +35,15 @@ const Heros = (props: Props) => {
               className='h-full w-full max-w-screen-md object-contain mx-auto'
             />
           </div>
-          <h2 className='font-bold text-xl'>
-            {item.name}
-          </h2>
+          <Link href={`/products/${item.slug}`} className='link-hover px-3'>
+            <h2 className='font-bold text-2xl'>
+              {item.name}
+            </h2></Link>
           <span>{formatCurrency(item.price || 0)}</span>
-          <div className='line-clamp-4'>
+          <div className='line-clamp-4 p-3 w-full max-w-screen-sm text-sm'>
             <Markdown>{item.description}</Markdown>
           </div>
-          <Link href={`/posts/${item.slug}`} className='mt-auto btn btn-primary'>
+          <Link href={`/products/${item.slug}`} className='mt-auto btn btn-primary'>
             Show Product
           </Link>
         </SwiperSlide>

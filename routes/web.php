@@ -19,9 +19,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/test', [\App\Http\Controllers\Guest\DashboardController::class, 'test']);
 
 Route::get('/', [\App\Http\Controllers\Guest\DashboardController::class, 'index']);
-Route::get('/test', [\App\Http\Controllers\Guest\DashboardController::class, 'test']);
+Route::get('/products/{product:slug}', [\App\Http\Controllers\Guest\DashboardController::class, 'product']);
+Route::get('/posts/{post:slug}', [\App\Http\Controllers\Guest\DashboardController::class, 'post']);
 
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
