@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
+        "build": "APP_ENV=production vite build",
         "build-ssr": "vite build && vite build --ssr"
     },
     "devDependencies": {
