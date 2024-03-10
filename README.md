@@ -1,8 +1,4 @@
-Creating comprehensive documentation for a Laravel project involves explaining the setup and deployment process, including both Docker Compose and the traditional method. Below is a template for such documentation. Please note that you might need to adapt some parts based on the specific details of your project.
-
----
-
-# Project Documentation
+# PRAKERJA PROJECT LARAVEL
 
 ## Table of Contents
 
