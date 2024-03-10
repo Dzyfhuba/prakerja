@@ -11,17 +11,28 @@ import { Swiper, SwiperSlide } from "swiper/react"
 import { useMediaQuery } from "usehooks-ts"
 
 type Props = {
-  item: Product
+  item: Post
   products: Product[]
   posts: Post[]
 }
 
-const ProductPage = (props: Props) => {
+const PostPage = (props: Props) => {
   const sm = useMediaQuery('(min-width: 640px)')
   const md = useMediaQuery('(min-width: 1080px)')
 
   return (
     <Main>
+      <article className="pt-14 px-3 prose mx-auto">
+        <h1>
+          {props.item.title}
+        </h1>
+        <Markdown>
+          {props.item.content}
+        </Markdown>
+      </article>
+
+      {/* posts */}
+      <h2 className="p-3 font-bold text-xl">Related Posts</h2>
       <Swiper
         modules={[Pagination, Autoplay]}
         loop={true}
@@ -32,28 +43,26 @@ const ProductPage = (props: Props) => {
           delay: 2500,
           disableOnInteraction: false,
         }}
+        slidesPerView={md ? 3 : (sm ? 2 : 1)}
         style={{
-          height: '50vh'
+          height: 180
         }}
       >
-        {props.item.images?.map((item, idx) => (
-          <SwiperSlide key={item} className='bg-base-200'>
-            <Image
-              src={item}
-              alt={`${props.item.name} ${idx}`}
-              className='h-full w-full max-w-screen-md object-contain mx-auto'
-            />
+        {props.posts?.map(p => (
+          <SwiperSlide key={p.id} className="bg-base-200">
+            <div className="p-3">
+              <div className="p-1 w-full h-full">
+                <Link href={`/posts/${p.slug}`}>
+                  <h1 className="font-bold link-hover text-xl line-clamp-1">{p.title}</h1>
+                </Link>
+                <div className="line-clamp-3 text-sm">
+                  <Markdown>{p.content}</Markdown>
+                </div>
+              </div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <article className="pt-14 px-3 prose mx-auto">
-        <h1>
-          {props.item.name}
-        </h1>
-        <Markdown>
-          {props.item.description}
-        </Markdown>
-      </article>
 
       {/* products */}
       <h2 className="p-3 font-bold text-xl">Related Products</h2>
@@ -91,41 +100,8 @@ const ProductPage = (props: Props) => {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* posts */}
-      <h2 className="p-3 font-bold text-xl">Related Posts</h2>
-      <Swiper
-        modules={[Pagination, Autoplay]}
-        loop={true}
-        pagination={{
-          clickable: true,
-        }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        slidesPerView={md ? 3 : (sm ? 2 : 1)}
-        style={{
-          height: 180
-        }}
-      >
-        {props.posts?.map(p => (
-          <SwiperSlide key={p.id} className="bg-base-200">
-            <div className="p-3">
-              <div className="p-1 w-full h-full">
-                <Link href={`/posts/${p.slug}`}>
-                  <h1 className="font-bold link-hover text-xl line-clamp-1">{p.title}</h1>
-                </Link>
-                <div className="line-clamp-3 text-sm">
-                  <Markdown>{p.content}</Markdown>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
     </Main>
   )
 }
 
-export default ProductPage
+export default PostPage

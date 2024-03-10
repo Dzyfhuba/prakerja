@@ -12,9 +12,11 @@ use Illuminate\Support\Facades\Cache;
 class DashboardController extends Controller
 {
   protected $seed;
-  public function __construct() {
+  public function __construct()
+  {
     $seed = Cache::get('seed', random_int(1, 5));
-    if (!Cache::has('seed')) Cache::put('seed', $seed, now()->addHour());
+    if (!Cache::has('seed'))
+      Cache::put('seed', $seed, now()->addHour());
     $this->seed = $seed;
   }
   public function index()
@@ -47,8 +49,12 @@ class DashboardController extends Controller
 
   public function post(Post $post)
   {
+    $products = Product::query()->inRandomOrder($this->seed)->limit(5)->get();
+    $posts = Post::query()->whereNot('id', $post->id)->inRandomOrder($this->seed)->limit(5)->get();
     return inertia('Post', [
-      'item' => $post
+      'item' => $post,
+      'products' => $products,
+      'posts' => $posts,
     ]);
   }
 }
